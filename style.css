@@ -1,0 +1,295 @@
+/* ==========================================================================
+   1. ESTILOS MACRO GIGANTES (OPTIMIZADO PARA MONITOR DE ORDENADOR DE OFICINA)
+   ========================================================================== */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background-color: #f5f6f5;
+    font-size: 13pt;
+}
+
+.contenedor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #2c3e2f;
+    padding: 25px 60px;
+    flex-wrap: wrap;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.bloque-marca {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.bloque-marca .logo {
+    height: 140px;
+    width: auto;
+    display: block;
+}
+
+.bloque-marca .titulo {
+    color: #d4e4d4;
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 26pt;
+    font-weight: bold;
+    margin: 0;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    text-transform: uppercase;
+}
+
+.menu-enlaces {
+    display: flex;
+    gap: 45px;
+    align-items: center;
+}
+
+.enlace-menu {
+    color: #ffffff !important;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16pt;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    padding: 10px 15px;
+}
+
+.enlace-menu:hover {
+    color: #b58d3d !important;
+    transform: scale(1.05);
+}
+
+.seccion-datos {
+    padding: 40px 60px;
+    max-width: 1600px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.cabecera-seccion {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    border-bottom: 3px solid #2c3e2f;
+    padding-bottom: 20px;
+}
+
+.cabecera-seccion h2 {
+    color: #2c3e2f;
+    margin: 0;
+    font-size: 24pt;
+}
+
+.cabecera-seccion select {
+    font-size: 14pt;
+    padding: 8px;
+    height: 45px;
+}
+
+.contenedor-tarjetas {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    margin-bottom: 40px;
+    align-items: start;
+}
+
+.tarjeta-kilos {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+}
+
+.tarjeta-kilos h3 {
+    color: #2c3e2f;
+    margin: 0 0 20px 0;
+    font-size: 20pt;
+}
+
+.tarjeta-kilos p {
+    color: #555;
+    line-height: 1.8;
+    font-size: 14pt;
+    margin-bottom: 15px;
+}
+
+.tarjeta-kilos h4 {
+    margin: 0 0 10px 0;
+    color: #7f8c8d;
+    font-size: 13pt;
+    text-transform: uppercase;
+}
+
+.cifra-kilos {
+    font-size: 36pt;
+    font-weight: bold;
+    color: #2c3e2f;
+    margin: 0;
+}
+
+.contenedor-tarjetas div img {
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.06);
+}
+
+.contenedor-formulario {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+    margin-bottom: 40px;
+}
+
+.contenedor-formulario h3 {
+    font-size: 18pt;
+    color: #2c3e2f;
+    margin-top: 0;
+    border-bottom: 2px solid #f0f0f0;
+    padding-bottom: 15px;
+}
+
+.formulario-cosecha {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    align-items: flex-end;
+}
+
+.grupo-input {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+    min-width: 250px;
+}
+
+.grupo-input label {
+    font-weight: bold;
+    color: #2c3e2f;
+    font-size: 13pt;
+}
+
+.grupo-input input, .grupo-input select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 13pt;
+    height: 50px;
+    box-sizing: border-box;
+}
+
+.btn-primario {
+    padding: 0 35px;
+    height: 50px;
+    background-color: #b58d3d;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 13pt;
+    transition: background 0.3s;
+}
+
+.btn-primario:hover {
+    background-color: #937130;
+}
+
+.tabla-datos {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.04);
+    font-size: 13pt;
+}
+
+.tabla-datos th {
+    background-color: #2c3e2f;
+    color: white;
+    padding: 18px;
+    font-size: 14pt;
+}
+
+.tabla-datos td {
+    padding: 18px;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+/* ==========================================================================
+   2. REGLAS EXCLUSIVAS PARA MÓVILES (ADAPTACIÓN COMPACTA)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .contenedor-header {
+        flex-direction: column !important;
+        padding: 20px !important;
+        gap: 15px !important;
+    }
+    .bloque-marca {
+        flex-direction: column !important;
+        gap: 10px !important;
+        text-align: center !important;
+    }
+    .bloque-marca .logo {
+        height: 100px !important;
+    }
+    .bloque-marca .titulo {
+        font-size: 18pt !important;
+        letter-spacing: 1px !important;
+    }
+    .menu-enlaces {
+        width: 100% !important;
+        justify-content: center !important;
+        gap: 15px !important;
+        flex-wrap: wrap !important;
+    }
+    .enlace-menu {
+        font-size: 11pt !important;
+        padding: 6px 10px !important;
+    }
+    .cabecera-seccion {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center !important;
+        gap: 15px !important;
+        width: 100% !important;
+    }
+    .contenedor-formulario {
+        padding: 20px !important;
+    }
+    .formulario-cosecha {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    .grupo-input {
+        width: 100% !important;
+    }
+    .contenedor-tarjetas {
+        grid-template-columns: 1fr !important;
+    }
+    .seccion-datos {
+        padding: 10px !important;
+    }
+    .tabla-datos th, .tabla-datos td {
+        padding: 10px 5px !important;
+        font-size: 10pt !important;
+    }
+}

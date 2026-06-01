@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuaderno de Campo - MASÍA CENTENARIA</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+
+    <nav class="contenedor-header">
+        <div class="bloque-marca">
+            <img src="/img/logo.png" class="logo" alt="Logo">
+            <h1 class="titulo">MASÍA CENTENARIA FAMILIAR</h1>
+        </div>
+        <div class="menu-enlaces">
+            <a href="index.html" class="enlace-menu" style="color: #b58d3d;">INICIO</a>
+            <a href="registro.html" class="enlace-menu">PARADAS</a>
+            <a href="totales.html" class="enlace-menu">TOTAL KILOS</a>
+            <a href="fitosanitario.html" class="enlace-menu">FITOSANITARIOS</a>
+        </div>
+    </nav>
+
+    <main class="seccion-datos">
+        <div class="cabecera-seccion" style="margin-bottom: 15px;">
+            <h2 id="añoDinamico">CAMPAÑA DE OLIVA 2025-2026</h2>
+            <div>
+                <label id="opcionAño" for="selectorAño">Año Activo:</label>
+                <select id="selectorAño"></select>
+            </div>
+        </div>
+
+        <div style="text-align: right; margin: 0 0 35px 0; font-size: 14pt; color: #b58d3d; font-weight: bold; letter-spacing: 0.5px;">
+            Selecciona una opción del menú año para empezar a trabajar.
+        </div>
+
+        <div class="contenedor-tarjetas">
+            <div class="tarjeta-kilos" style="background: white; padding: 25px; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); text-align: left;">
+                <h3 style="color: #2c3e2f; margin-bottom: 12px; font-size: 14pt;">Sobre Nuestra Masía</h3>
+                <p style="color: #666; line-height: 1.6; font-size: 11pt;">Bienvenido al panel de gestión de <b>ArzAgraMunt</b>. Nuestra masía se dedica a la producción agrícola sostenible, combinando la tradición del cultivo del olivar con las técnicas modernas de optimización de recursos.</p>
+                <p style="color: #666; line-height: 1.6; font-size: 11pt; margin-top: 10px;">A través de este sistema centralizado, monitorizamos el rendimiento de cada una de nuestras paradas en tiempo real, garantizando una trazabilidad absoluta desde la recolección en el árbol hasta el pesaje final en la almazara. Nuestro compromiso es la máxima calidad con el menor impacto ambiental.</p>
+            </div>
+            <div>
+                <img src="img/campo_olivas.jpg" alt="Campo de oliva">
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
