@@ -63,10 +63,28 @@ body {
     padding: 10px 15px;
 }
 
+
+
+
+.enlace-menu.activo {
+    color: #b58d3d !important;      /* Color dorado */
+    border-bottom: 3px solid #b58d3d; /* Línea debajo */
+    padding-bottom: 5px;
+}
+
+
+
+
+
+
 .enlace-menu:hover {
     color: #b58d3d !important;
     transform: scale(1.05);
 }
+
+
+
+
 
 .seccion-datos {
     padding: 40px 60px;
@@ -194,6 +212,17 @@ body {
     box-sizing: border-box;
 }
 
+/* CLASE NUEVA PARA ALINEAR BOTONES EN ORDENADOR */
+.grupo-botones {
+    display: flex; 
+    gap: 10px; 
+    align-items: center; 
+    justify-content: center; 
+    margin-top: 20px; 
+    width: 100%; 
+    flex-wrap: wrap; 
+}
+
 .btn-primario {
     padding: 0 35px;
     height: 50px;
@@ -209,6 +238,14 @@ body {
 
 .btn-primario:hover {
     background-color: #937130;
+}
+
+/* CLASE NUEVA PARA TABLAS RESPONSIVAS */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 20px;
 }
 
 .tabla-datos {
@@ -255,16 +292,25 @@ body {
         font-size: 18pt !important;
         letter-spacing: 1px !important;
     }
+    
+    /* MENÚ EN COLUMNA PARA QUE QUEPA MEJOR */
     .menu-enlaces {
         width: 100% !important;
-        justify-content: center !important;
-        gap: 15px !important;
-        flex-wrap: wrap !important;
+        flex-direction: column !important; 
+        align-items: center !important;
+        gap: 10px !important;
     }
+    
     .enlace-menu {
-        font-size: 11pt !important;
-        padding: 6px 10px !important;
+        font-size: 12pt !important;
+        padding: 8px 10px !important;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+        background-color: rgba(0,0,0,0.1); /* Efecto botón para los enlaces */
+        border-radius: 5px;
     }
+    
     .cabecera-seccion {
         flex-direction: column !important;
         align-items: center !important;
@@ -282,6 +328,18 @@ body {
     .grupo-input {
         width: 100% !important;
     }
+    
+    /* BOTONES APILADOS EN EL MÓVIL */
+    .grupo-botones {
+        flex-direction: column !important;
+        align-items: stretch !important;
+    }
+    
+    .grupo-botones .btn-primario {
+        width: 100% !important;
+        margin-bottom: 5px;
+    }
+    
     .contenedor-tarjetas {
         grid-template-columns: 1fr !important;
     }

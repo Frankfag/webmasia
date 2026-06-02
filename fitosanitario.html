@@ -5,9 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tratamientos Fitosanitarios - MASÍA CENTENARIA</title>
     <link rel="stylesheet" href="style.css"> 
-    <!-- Librerías para exportación real a Excel -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+
+    <style>
+        /* Estilo rápido para asegurar que el formulario sea responsive */
+        .grid-formulario {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 600px) {
+            .grupo-botones { flex-direction: column; }
+            .btn-primario { width: 100%; margin-bottom: 5px; }
+        }
+    </style>
 </head>
 <body>
 
@@ -26,107 +42,51 @@
 
     <main class="seccion-datos">
         <div class="cabecera-seccion">
-            <h2 id="añoDinamico">REGISTRO OFICIAL DE FITOSANITARIOS (CUE)</h2>
-            <div>
-                <label id="opcionAño" for="selectorAño">Año Activo:</label>
-                <select id="selectorAño"></select>
-            </div>
+            <h2>TRATAMIENTOS FITOSANITARIOS</h2>
+            <select id="selectorAño"></select>
         </div>
 
         <div class="contenedor-formulario">
-            <h3>NUEVA APLICACIÓN FITOSANITARIA OFICIAL (SIEX/CUE)</h3>
-            <form class="formulario-cosecha" id="form-fito">
-                <div class="grupo-input">
-                    <label for="fito-fecha">Fecha de Tratamiento:</label>
-                    <input type="date" id="fito-fecha" required>
+            <form id="formulario-fito">
+                <div class="grid-formulario">
+                    <div class="grupo-input"><label>Fecha:</label><input type="date" id="fito-fecha" required></div>
+                    <div class="grupo-input"><label>Parada:</label><select id="fito-parada" required>
+                        <option value="JOVE">JOVE</option><option value="VIÑETA">VIÑETA</option>
+                        <option value="TIRAS">TIRAS</option><option value="GRANJA">GRANJA</option>
+                    </select></div>
+                    <div class="grupo-input"><label>Producto:</label><input type="text" id="fito-producto" required></div>
+                    <div class="grupo-input"><label>Dosis:</label><input type="text" id="fito-dosis"></div>
+                    <div class="grupo-input"><label>Nº Registro:</label><input type="text" id="fito-registro"></div>
+                    <div class="grupo-input"><label>Plazo:</label><input type="number" id="fito-plazo"></div>
+                    <div class="grupo-input"><label>Operario:</label><input type="text" id="fito-operario"></div>
+                    <div class="grupo-input"><label>Nº Carnet:</label><input type="text" id="fito-carnet"></div>
+                    <div class="grupo-input"><label>Equipo:</label><input type="text" id="fito-equipo"></div>
+                    <div class="grupo-input"><label>Nº ROMA:</label><input type="text" id="fito-roma"></div>
                 </div>
-                <div class="grupo-input">
-                    <label for="fito-parada">Parcela / Parada Tratada:</label>
-                    <select id="fito-parada" required>
-                        <option value="" disabled selected>-- Elige una parada --</option>
-                        <option value="JOVE">JOVE</option>
-                        <option value="VIÑETA">VIÑETA</option>
-                        <option value="TIRAS">TIRAS</option>
-                        <option value="GRANJA">GRANJA</option>
-                        <option value="HUERTA">HUERTA</option>
-                        <option value="CAMINO">CAMINO</option>
-                        <option value="PEREMATA">PEREMATA</option>
-                    </select>
-                </div>
-                <div class="grupo-input">
-                    <label for="fito-superficie">Superficie Tratada (Hectáreas):</label>
-                    <input type="number" id="fito-superficie" step="0.01" placeholder="Ej: 1.50" required>
-                </div>
-                <div class="grupo-input">
-                    <label for="fito-producto">Nombre del Producto:</label>
-                    <input type="text" id="fito-producto" placeholder="Ej: Cupra, Cobre..." required>
-                </div>
-                <div class="grupo-input">
-                    <label for="fito-registro">Nº Registro Oficial (ROPO):</label>
-                    <input type="text" id="fito-registro" placeholder="Ej: 24.150 / 12.894" required>
-                </div>
-                <div class="grupo-input">
-                    <label for="fito-dosis">Dosis Aplicada:</label>
-                    <input type="text" id="fito-dosis" placeholder="Ej: 3 kg/ha, 200 cc/hl" required>
-                </div>
-                <div class="grupo-input">
-                    <label for="fito-litros">Litros Totales de Caldo:</label>
-                    <input type="number" id="fito-litros" placeholder="Ej: 1000" min="0" required>
-                </div>
-                <div class="grupo-input">
-                    <label for="fito-plaga">Justificación (Plaga/Motivo):</label>
-                    <select id="fito-plaga" required>
-                        <option value="" disabled selected>-- Selecciona motivo --</option>
-                        <option value="Repilo (Spilocaea oleagina)">Repilo (Spilocaea oleagina)</option>
-                        <option value="Mosca del olivo (Bactrocera oleae)">Mosca del olivo (Bactrocera oleae)</option>
-                        <option value="Prays del olivo (Prays oleae)">Prays del olivo (Prays oleae)</option>
-                        <option value="Tratamiento Herbicida / Malas Hierbas">Tratamiento Herbicida / Malas Hierbas</option>
-                        <option value="Prevención Fitosanitaria General">Prevención Fitosanitaria General</option>
-                    </select>
-                </div>
-                <div class="grupo-input">
-                    <label for="fito-operario">Operario / Aplicador (Nombre):</label>
-                    <input type="text" id="fito-operario" placeholder="Nombre completo" required>
-                </div>
-                <div class="grupo-input">
-                    <label for="fito-carnet">Nº Carnet Manipulador Fito:</label>
-                    <input type="text" id="fito-carnet" placeholder="Ej: CAA-XXXXXX-X" required>
-                </div>
-                <div class="grupo-input">
-                    <label for="fito-maquinaria">Equipo / Maquinaria:</label>
-                    <input type="text" id="fito-maquinaria" placeholder="Ej: Atomizador, Mochila..." required>
-                </div>
-                <div class="grupo-input">
-                    <label for="fito-roma">Nº Inscripción ROMA (Equipo):</label>
-                    <input type="text" id="fito-roma" placeholder="Ej: 43-XXXX-XXXXX" required>
-                </div>
-                <div class="grupo-input">
-                    <label for="fito-plazo">Plazo de Seguridad (Días):</label>
-                    <input type="number" id="fito-plazo" min="0" placeholder="Ej: 14" required>
-                </div>
-                <div style="display: flex; gap: 10px; align-items: flex-end; justify-content: center; margin-top: 20px; width: 100%;">
-                    <button type="submit" class="btn-primario">GUARDAR TRATAMIENTO OFICIAL</button>
-                    <button type="button" class="btn-primario" id="btn-imprimir-fito" style="background-color: #2c3e2f;" onclick="window.print()">IMPRIMIR</button>
-                    <button type="button" class="btn-primario" id="btn-excel-fito" style="background-color: #27ae60;" onclick="bajarExcelFitoOficial(document.getElementById('selectorAño'))">DESCARGAR EXCEL</button>
-                </div>
+                
+               <div class="grupo-botones">
+    <button type="submit" class="btn-primario" style="background-color: #b58d3d;">GUARDAR TRATAMIENTO</button>
+    
+    <button type="button" class="btn-primario" style="background-color: #2c3e2f;" onclick="window.print()">IMPRIMIR</button>
+    
+    <button type="button" class="btn-primario" style="background-color: #27ae60;" onclick="bajarExcelFitoOficial(document.getElementById('selectorAño'))">DESCARGAR EXCEL</button>
+</div>
             </form>
         </div>
 
-        <table class="tabla-datos" id="tabla-fito">
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Parada Exacta</th>
-                    <th>Comercial / Plaga</th>
-                    <th>Datos Técnicos</th>
-                    <th>Seguridad (Plazo)</th>
-                    <th>Acción</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+        <div class="table-responsive">
+            <table class="tabla-datos" id="tabla-fito">
+                <thead>
+                    <tr><th>Fecha</th><th>Parada</th><th>Producto</th><th>Operario</th><th>Acción</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </main>
 
-    <script src="script_fito.js"></script>
+    <script src="estilo_excel.js"></script>
+<script src="script.js"></script>
+
+    
 </body>
 </html>

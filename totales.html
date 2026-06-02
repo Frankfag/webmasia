@@ -44,18 +44,20 @@
             <div class="formulario-cosecha">
                 <div class="grupo-input">
                     <label for="filtro-parada">Ver registros de:</label>
-                    <select id="filtro-parada">
-                        <option value="TODAS">-- Todas las paradas --</option>
-                        <option value="JOVE">JOVE</option>
-                        <option value="VIÑETA">VIÑETA</option>
-                        <option value="TIRAS">TIRAS</option>
-                        <option value="GRANJA">GRANJA</option>
-                        <option value="HUERTA">HUERTA</option>
-                        <option value="CAMINO">CAMINO</option>
-                        <option value="PEREMATA">PEREMATA</option>
-                    </select>
+                    <select id="filtro-parada" onchange="actualizarTodo(this.value)">
+    <option value="TODAS">-- Todas las paradas --</option>
+    <option value="JOVE">JOVE</option>
+    <option value="VIÑETA">VIÑETA</option>
+    <option value="TIRAS">TIRAS</option>
+    <option value="GRANJA">GRANJA</option>
+    <option value="HUERTA">HUERTA</option>
+    <option value="CAMINO">CAMINO</option>
+    <option value="PEREMATA">PEREMATA</option>
+</select>
                 </div>
-                <div style="display: flex; gap: 10px; align-items: flex-end; flex-wrap: wrap;">
+                
+                <!-- BOTONES MODIFICADOS -->
+                <div class="grupo-botones">
                     <button class="btn-primario" id="btn-filtrar" style="height: 41px; background-color: #2c3e2f;">FILTRAR</button>
                     <button class="btn-primario" id="btn-vista-agrupada" style="height: 41px; background-color: #b58d3d;">AGRUPADA</button>
                     <button class="btn-primario" id="btn-vista-detallada" style="height: 41px; background-color: #7f8c8d;">DETALLADA</button>
@@ -65,13 +67,45 @@
             </div>
         </div>
 
-        <table class="tabla-datos">
-            <thead><tr><th>Fecha</th><th>Parada</th><th>Kilos Netos</th><th>Acciones</th></tr></thead>
-            <tbody></tbody>
-        </table>
+        <!-- TABLA MODIFICADA -->
+        <div class="table-responsive">
+            <table class="tabla-datos">
+                <thead><tr><th>Fecha</th><th>Parada</th><th>Kilos Netos</th><th>Acciones</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </main>
 
     <script src="script.js"></script>
     <script src="estilo_totales.js"></script>
+
+
+    <script>
+function actualizarTodo(valor) {
+    // 1. Cambia el título h4
+    const titulo = document.querySelector('h4');
+    if (titulo) {
+        titulo.innerText = (valor === "TODAS") ? "Total Seleccionado" : "Total: " + valor.toUpperCase();
+    }
+
+    // 2. Calcula y muestra el total
+    // Nota: Asegúrate de que la clave 'datos_2023-2024' sea la correcta en tu localStorage
+    const datos = JSON.parse(localStorage.getItem('datos_2023-2024')) || [];
+    let sumaTotal = 0;
+
+    datos.forEach(r => {
+        // Filtramos: si es "TODAS" suma todo, si no, solo la parada que coincida
+        if (valor === "TODAS" || r.parada === valor) {
+            sumaTotal += parseFloat(r.kilos || 0);
+        }
+    });
+
+    // 3. Actualiza el elemento p con id="total-kilos-suma"
+    const display = document.getElementById('total-kilos-suma');
+    if (display) {
+        display.innerText = sumaTotal.toFixed(2) + " kg";
+    }
+}
+</script>
 </body>
 </html>

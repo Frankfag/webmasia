@@ -57,25 +57,30 @@
                     <label for="fecha">Fecha de Recogida:</label>
                     <input type="date" id="fecha" required>
                 </div>
-                <div style="display: flex; gap: 10px; align-items: flex-end; justify-content: center; margin-top: 20px; width: 100%;">
+                
+                <!-- BOTONES MODIFICADOS -->
+                <div class="grupo-botones">
                     <button type="submit" class="btn-primario">REGISTRAR DATOS</button>
                     <button type="button" class="btn-primario" id="btn-imprimir-paradas" style="background-color: #2c3e2f;" onclick="window.print()">IMPRIMIR</button>
-                    <button type="button" class="btn-primario" id="btn-excel-paradas" style="background-color: #27ae60;" onclick="descargarExcelParadasPremium(document.getElementById('selectorAño'))">DESCARGAR EXCEL</button>
+                    <button type="button" class="btn-primario" style="background-color: #27ae60;" onclick="bajarExcelRegistroOficial(document.getElementById('selectorAño'))">DESCARGAR EXCEL</button>
                 </div>
             </form>
         </div>
 
-        <table class="tabla-datos">
-            <thead>
-                <tr>
-                    <th>Fecha</th>
-                    <th>Parada Exacta</th>
-                    <th>Kilos Pesados</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
+        <!-- TABLA MODIFICADA -->
+        <div class="table-responsive">
+            <table class="tabla-datos">
+                <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Parada Exacta</th>
+                        <th>Kilos Pesados</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </main>
 
     <script src="script.js"></script>

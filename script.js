@@ -1,3 +1,24 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. Detectar el nombre de la página actual (ej: "fitosanitario.html")
+    const urlActual = window.location.pathname.split("/").pop();
+    
+    // 2. Buscar todos los enlaces del menú
+    const enlaces = document.querySelectorAll('.menu-enlaces a');
+    
+    enlaces.forEach(enlace => {
+        // 3. Si el href del enlace coincide con la página actual, le ponemos la clase
+        if (enlace.getAttribute('href') === urlActual) {
+            enlace.classList.add('activo');
+        }
+    });
+});
+
+
+
+
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     var selectorAño = document.getElementById('selectorAño');
     var formularioCosecha = document.querySelector('.formulario-cosecha');
@@ -135,3 +156,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     arrancarPrograma();
 });
+
+
+function cambiarTituloParada(valor) {
+    const titulo = document.querySelector('h4');
+    if (titulo) {
+        titulo.textContent = (valor === "TODAS" || valor === "") ? "TOTAL SELECCIONADO" : "TOTAL: " + valor.toUpperCase();
+    }
+}
+
+
